@@ -6,7 +6,7 @@ pdeathsigexec *cmd* *...*
 
 pdeathsigexec: signal process when parent exits
 
-A subprocess whose parent exits will be re-parented to init (PID 1)
+A subprocess whose parent exits may be re-parented to init (PID 1)
 and continue to run. `pdeathsigexec` sets the process to have a signal
 sent if the parent process terminates.
 
@@ -21,9 +21,6 @@ set-user-ID or set-group-ID binary, or a binary that has associated
 capabilities (see capabilities(7)); otherwise, this value is preserved
 across execve(2).
 ```
-
-The behaviour can be set for related, dynamically linked processes in
-a supervision tree by using a `LD_PRELOAD` library (see `EXAMPLES`).
 
 # EXAMPLES
 
