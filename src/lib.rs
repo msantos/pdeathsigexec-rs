@@ -8,13 +8,11 @@
 //! to the executed process only and not descendents
 //! ([prctl(2)](https://man7.org/linux/man-pages/man2/prctl.2.html)):
 //!
-//! ```
 //! The parent-death signal setting is cleared for the child of a fork(2).
 //! It is also (since Linux 2.4.36 / 2.6.23) cleared when  executing  a
 //! set-user-ID or set-group-ID binary, or a binary that has associated
 //! capabilities (see capabilities(7)); otherwise, this value is preserved
 //! across execve(2).
-//! ```
 use libc::c_char;
 use std::ffi::CString;
 
@@ -22,7 +20,7 @@ use std::ffi::CString;
 use libc::{__errno_location, prctl, PR_SET_PDEATHSIG};
 
 #[cfg(target_os = "freebsd")]
-use libc::{__error, c_int, c_void, procctl, P_PID, PROC_PDEATHSIG_CTL};
+use libc::{__error, c_int, c_void, procctl, PROC_PDEATHSIG_CTL, P_PID};
 
 /// Retrieve the last error number of a system or library call.
 pub fn errno() -> i32 {
